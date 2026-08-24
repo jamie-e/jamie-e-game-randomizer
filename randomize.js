@@ -31,5 +31,10 @@ function randomize() {
     const cosmicResults = document.getElementById('cosmic-encounter-results');
   } else if (gameValue === 'marvel-legendary') {
     const marvelResults = document.getElementById('marvel-legendary-results');
+
+    const coinFlipItems = [1, 2];
+    const grievousWoundResult = coinFlipItems[Math.floor(Math.random() * coinFlipItems.length)];
+    const sidekickResult = coinFlipItems[Math.floor(Math.random() * coinFlipItems.length)];
+    const specialBystanderResult = coinFlipItems[Math.floor(Math.random() * coinFlipItems.length)];
   }
 }
