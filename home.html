@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <body>
+      <h1>Jamie's Game Randomizer</h1>
+      <div id="game-select-container">
+        <label for="#game-select">Select your game:</label>
+        <br />
+        <select id="game-select">
+          <option></option>
+          <option value="cosmic-encounter">Cosmic Encounter</option>
+          <option value="marvel-legendary">Marvel Legendary</option>
+        </select>
+      </div>
+      <br />
+
+      <div id="marvel-legendary-solo-checkbox-container" style="display: block;">
+        <label for="#marvel-legendary-solo-checkbox">Playing Solo?</label>
+        <br />
+        <input type="checkbox"></input>
+      </div>
+      <br />
+
+      <button onclick="randomize()">Randomize!</button>
+      <br />
+
+      <hr />
+      <h2>Your Results:</h2>
+      <div>
+        No selection yet
+      </div>
+    <script src="cosmic-encounter-randomizer.js"></script>
+    <script src="marvel-legendary-randomizer.js"></script>
+    <script src="randomize.js"></script>
+  </body>
+</html>
