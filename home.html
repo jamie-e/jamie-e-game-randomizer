@@ -2,7 +2,7 @@
 <html>
   <body>
       <h1>Jamie's Game Randomizer</h1>
-      <div id="game-select-container">
+      <div id="game-select-container" style="margin-bottom: 20px;">
         <label for="#game-select">Select your game:</label>
         <br />
         <select id="game-select">
@@ -13,12 +13,17 @@
       </div>
       <br />
 
-      <div id="marvel-legendary-solo-checkbox-container" style="display: block;">
+      <div id="marvel-legendary-solo-checkbox-container" style="display: none; margin-bottom: 20px;">
         <label for="#marvel-legendary-solo-checkbox">Playing Solo?</label>
         <br />
         <input type="checkbox"></input>
       </div>
-      <br />
+
+      <div id="cosmic-encounter-player-count" style="display: none; margin-bottom: 20px;">
+        <label for="#cosmic-encounter-player-count">Player Count</label>
+        <br />
+        <input type="number" min="0" max="8" style="width: 120px;"></input>
+      </div>
 
       <button onclick="randomize()">Randomize!</button>
       <br />
@@ -26,10 +31,37 @@
       <hr />
       <h2>Your Results:</h2>
       <div>
-        No selection yet
+        <span id="placeholder-results">
+          No selection yet
+        </span>
+
+        <div id="marvel-legendary-results" style="display: none;">
+          <h3>Marvel Legendary Results</h3>
+          <ul>
+            <li>Heroes:<span id="marvel-heroes-results"></span></li>
+            <li>Scheme:<span id="marvel-scheme-results"></span></li>
+            <li>Mastermind:<span id="marvel-mastermind-results"></span></li>
+            <li>Villain Groups:<span id="marvel-villain-group-results"></span></li>
+            <li>Henchmen Villains:<span id="marvel-henchmen-results"></span></li>
+            <li>Grievous Wounds:<span id="marvel-grievous-wounds"></span></li>
+            <li>
+              Sidekicks (If 'No', ignore if another Hero, Villain, Scheme, or Mastermind says to include them):
+              <span id="marvel-sidekick-results"></span>
+            </li>
+            <li>Special Bystanders:<span id="marvel-special-bystander-results"></span></li>
+          </ul>
+        </div>
+
+        <div id="cosmic-encounter-results" style="display: none;">
+          <h3>Cosmic Encounter Results</h3>
+          <ul>
+            <li>Number of Players: <span id="cosmic-encounter-player-count"></span></li>
+            <li>Aliens: <span id="cosmic-encounter-aliens-list"></span></li>
+          </ul>
+        </div>
       </div>
-    <script src="cosmic-encounter-randomizer.js"></script>
-    <script src="marvel-legendary-randomizer.js"></script>
+    <script src="cosmic-encounter-variables.js"></script>
+    <script src="marvel-legendary-variables.js"></script>
     <script src="randomize.js"></script>
   </body>
 </html>
