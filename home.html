@@ -13,16 +13,16 @@
       </div>
       <br />
 
-      <div id="marvel-legendary-solo-checkbox-container" style="display: none; margin-bottom: 20px;">
-        <label for="#marvel-legendary-solo-checkbox">Playing Solo?</label>
+      <div id="marvel-legendary-player-count-container" style="display: none; margin-bottom: 20px;">
+        <label for="#marvel-legendary-player-count">Player Count</label>
         <br />
-        <input type="checkbox"></input>
+        <input id="marvel-legendary-player-count" min="1" max="5"></input>
       </div>
 
       <div id="cosmic-encounter-player-count" style="display: none; margin-bottom: 20px;">
         <label for="#cosmic-encounter-player-count">Player Count</label>
         <br />
-        <input type="number" min="0" max="8" style="width: 120px;"></input>
+        <input id="cosmic-encounter-player-count-value" type="number" min="0" max="8" style="width: 120px;"></input>
       </div>
 
       <button onclick="randomize()">Randomize!</button>
@@ -38,17 +38,17 @@
         <div id="marvel-legendary-results" style="display: none;">
           <h3>Marvel Legendary Results</h3>
           <ul>
-            <li>Heroes:<span id="marvel-heroes-results"></span></li>
-            <li>Scheme:<span id="marvel-scheme-results"></span></li>
-            <li>Mastermind:<span id="marvel-mastermind-results"></span></li>
-            <li>Villain Groups:<span id="marvel-villain-group-results"></span></li>
-            <li>Henchmen Villains:<span id="marvel-henchmen-results"></span></li>
-            <li>Grievous Wounds:<span id="marvel-grievous-wounds"></span></li>
+            <li>Heroes: <strong id="marvel-heroes-results"></strong></li>
+            <li>Scheme: <strong id="marvel-scheme-results"></strong></li>
+            <li>Mastermind: <strong id="marvel-mastermind-results"></strong></li>
+            <li>Villain Groups: <strong id="marvel-villain-group-results"></strong></li>
+            <li>Henchmen Villains: <strong id="marvel-henchmen-results"></strong></li>
+            <li>Grievous Wounds: <strong id="marvel-grievous-wounds"></strong></li>
             <li>
               Sidekicks (If 'No', ignore if another Hero, Villain, Scheme, or Mastermind says to include them):
-              <span id="marvel-sidekick-results"></span>
+              <strong id="marvel-sidekick-results"></strong>
             </li>
-            <li>Special Bystanders:<span id="marvel-special-bystander-results"></span></li>
+            <li>Special Bystanders: <strong id="marvel-special-bystander-results"></strong></li>
           </ul>
         </div>
 
@@ -56,7 +56,7 @@
           <h3>Cosmic Encounter Results</h3>
           <ul>
             <li>Number of Players: <span id="cosmic-encounter-player-count"></span></li>
-            <li>Aliens: <span id="cosmic-encounter-aliens-list"></span></li>
+            <li>Aliens: <strong id="cosmic-encounter-aliens-list"></strong></li>
           </ul>
         </div>
       </div>

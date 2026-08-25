@@ -20,6 +20,15 @@ function updateGameUI(gameValue) {
   }
 }
 
+function pickUniqueRandom(source, count) {
+  const pool = [...source];
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return pool.slice(0, count);
+}
+
 document.getElementById('game-select').addEventListener('change', (event) => {
   updateGameUI(event.target.value);
 });
@@ -31,10 +40,48 @@ function randomize() {
     const cosmicResults = document.getElementById('cosmic-encounter-results');
   } else if (gameValue === 'marvel-legendary') {
     const marvelResults = document.getElementById('marvel-legendary-results');
+    marvelResults.style.display = 'block';
+
+    let heroResults;
+    if (document.getElementById('marvel-legendary-player-count').value === 1) {
+      heroResults = pickUniqueRandom(marvelLegendaryHeroes, 3);
+    } else {
+      heroResults = pickUniqueRandom(marvelLegendaryHeroes, 5);
+    }
+
+    let villainGroupResults;
+    if (document.getElementById('marvel-legendary-player-count').value === 1) {
+      villainGroupResults = pickUniqueRandom(marvelLegendaryHeroes, 3);
+    } else {
+      villainGroupResults = pickUniqueRandom(marvelLegendaryHeroes, 5);
+    }
+
+    let henchmenGroupResults;
+    if (
+      document.getElementById('marvel-legendary-player-count').value === 4 ||
+      document.getElementById('marvel-legendary-player-count').value === 5
+    ) {
+      henchmenGroupResults = pickUniqueRandom(marvelLegendaryHeroes, 2);
+    } else {
+      henchmenGroupResults = pickUniqueRandom(marvelLegendaryHeroes, 1);
+    }
+
+    const schemeResult = pickUniqueRandom(marvelLegendarySchemes, 1);
+    const mastermindResult = pickUniqueRandom(marvelLegendaryMasterMinds, 1);
 
     const coinFlipItems = [1, 2];
     const grievousWoundResult = coinFlipItems[Math.floor(Math.random() * coinFlipItems.length)];
     const sidekickResult = coinFlipItems[Math.floor(Math.random() * coinFlipItems.length)];
     const specialBystanderResult = coinFlipItems[Math.floor(Math.random() * coinFlipItems.length)];
+
+    document.getElementById('marvel-heroes-results').textContent = heroResults.join(', ');
+    document.getElementById('marvel-scheme-results').textContent = schemeResult.join(', ');
+    document.getElementById('marvel-mastermind-results').textContent = mastermindResult.join(', ');
+    document.getElementById('marvel-villain-group-results').textContent = villainGroupResults.join(', ');
+    document.getElementById('marvel-henchmen-results').textContent = henchmenGroupResults.join(', ');
+
+    document.getElementById('marvel-grievous-wounds').textContent = (grievousWoundResult === 1 ? 'Yes' : 'No');
+    document.getElementById('marvel-sidekick-results').textContent = (sidekickResult === 1 ? 'Yes' : 'No');
+    document.getElementById('marvel-special-bystander-results').textContent = (specialBystanderResult === 1 ? 'Yes' : 'No');
   }
 }
