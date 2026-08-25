@@ -51,9 +51,9 @@ function randomize() {
 
     let villainGroupResults;
     if (document.getElementById('marvel-legendary-player-count').value === 1) {
-      villainGroupResults = pickUniqueRandom(marvelLegendaryHeroes, 3);
+      villainGroupResults = pickUniqueRandom(marvelLegendaryVillainGroups, 3);
     } else {
-      villainGroupResults = pickUniqueRandom(marvelLegendaryHeroes, 5);
+      villainGroupResults = pickUniqueRandom(marvelLegendaryVillainGroups, 5);
     }
 
     let henchmenGroupResults;
@@ -61,9 +61,9 @@ function randomize() {
       document.getElementById('marvel-legendary-player-count').value === 4 ||
       document.getElementById('marvel-legendary-player-count').value === 5
     ) {
-      henchmenGroupResults = pickUniqueRandom(marvelLegendaryHeroes, 2);
+      henchmenGroupResults = pickUniqueRandom(marvelLegendaryHenchmenVillains, 2);
     } else {
-      henchmenGroupResults = pickUniqueRandom(marvelLegendaryHeroes, 1);
+      henchmenGroupResults = pickUniqueRandom(marvelLegendaryHenchmenVillains, 1);
     }
 
     const schemeResult = pickUniqueRandom(marvelLegendarySchemes, 1);
