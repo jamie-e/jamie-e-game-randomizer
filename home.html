@@ -22,7 +22,7 @@
       <div id="cosmic-encounter-player-count" style="display: none; margin-bottom: 20px;">
         <label for="#cosmic-encounter-player-count">Player Count</label>
         <br />
-        <input id="cosmic-encounter-player-count-value" type="number" min="0" max="8" style="width: 120px;"></input>
+        <input id="cosmic-encounter-player-count-value" type="number" min="3" max="8" style="width: 120px;"></input>
       </div>
 
       <button onclick="randomize()">Randomize!</button>
@@ -52,11 +52,10 @@
           </ul>
         </div>
 
-        <div id="cosmic-encounter-results" style="display: none;">
+        <div id="cosmic-encounter-results" style="display: block;">
           <h3>Cosmic Encounter Results</h3>
-          <ul>
-            <li>Number of Players: <span id="cosmic-encounter-player-count"></span></li>
-            <li>Aliens: <strong id="cosmic-encounter-aliens-list"></strong></li>
+          <ul id="cosmic-results-list">
+            <li>Number of Players: <strong id="cosmic-encounter-player-count-result-list-item"></strong></li>
           </ul>
         </div>
       </div>

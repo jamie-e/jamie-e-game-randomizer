@@ -1,5 +1,5 @@
 function updateGameUI(gameValue) {
-  const marvelCheckboxSection = document.getElementById('marvel-legendary-solo-checkbox-container');
+  const marvelCheckboxSection = document.getElementById('marvel-legendary-player-count-container');
   const cosmicPlayerSection = document.getElementById('cosmic-encounter-player-count');
   const marvelResults = document.getElementById('marvel-legendary-results');
   const cosmicResults = document.getElementById('cosmic-encounter-results');
@@ -18,6 +18,7 @@ function updateGameUI(gameValue) {
     marvelCheckboxSection.style.display = 'none';
     marvelResults.style.display = 'none';
   }
+  document.getElementById('placeholder-results').style.display = 'block';
 }
 
 function pickUniqueRandom(source, count) {
@@ -35,9 +36,34 @@ document.getElementById('game-select').addEventListener('change', (event) => {
 
 function randomize() {
   const gameValue = document.getElementById('game-select').value
-  
+  document.querySelectorAll('.result-list-li').forEach((li) => li.remove());
+
   if (gameValue === 'cosmic-encounter') {
     const cosmicResults = document.getElementById('cosmic-encounter-results');
+    const cosmicPlayerCount =
+      document.getElementById('cosmic-encounter-player-count-value').value;
+
+    if (cosmicPlayerCount === null || cosmicPlayerCount < 3 || cosmicPlayerCount > 8 || cosmicPlayerCount === undefined) {
+      alert('Hey! Select between 3 to 8 players');
+    }
+
+    let cosmicAlienResults;
+    cosmicAlienResults = pickUniqueRandom(cosmicEncounterAliensList, cosmicPlayerCount);
+
+    const resultsList = document.getElementById('cosmic-results-list');
+
+    // Clear previous randomize runs so you don't keep stacking aliens
+    resultsList.querySelectorAll('.result-list-li').forEach((li) => li.remove());
+
+    cosmicAlienResults.forEach((alien) => {
+      const li = document.createElement('li');
+      li.className = 'result-list-li';
+      li.textContent = alien;
+      resultsList.appendChild(li);
+    });
+
+    document.getElementById('cosmic-encounter-player-count-result-list-item').textContent = cosmicPlayerCount;
+    document.getElementById('placeholder-results').style.display = 'none';
   } else if (gameValue === 'marvel-legendary') {
     const marvelResults = document.getElementById('marvel-legendary-results');
     marvelResults.style.display = 'block';
