@@ -35,7 +35,7 @@ document.getElementById('game-select').addEventListener('change', (event) => {
 });
 
 function randomize() {
-  const gameValue = document.getElementById('game-select').value
+  const gameValue = document.getElementById('game-select').value;
   document.querySelectorAll('.result-list-li').forEach((li) => li.remove());
 
   if (gameValue === 'cosmic-encounter') {
@@ -66,34 +66,42 @@ function randomize() {
     document.getElementById('placeholder-results').style.display = 'none';
   } else if (gameValue === 'marvel-legendary') {
     const marvelResults = document.getElementById('marvel-legendary-results');
+    const marvelPlayerCount = document.getElementById('marvel-legendary-player-count').value;
     marvelResults.style.display = 'block';
 
     let heroResults;
-    if (document.getElementById('marvel-legendary-player-count').value === 1) {
+    if (marvelPlayerCount === 1) {
       heroResults = pickUniqueRandom(marvelLegendaryHeroes, 3);
     } else {
       heroResults = pickUniqueRandom(marvelLegendaryHeroes, 5);
     }
 
+    const schemeResult = pickUniqueRandom(marvelLegendarySchemes, 1);
+    const mastermindResult = pickUniqueRandom(marvelLegendaryMasterMinds, 1);
+
     let villainGroupResults;
-    if (document.getElementById('marvel-legendary-player-count').value === 1) {
+    if (marvelPlayerCount === '1') {
+      villainGroupResults = pickUniqueRandom(marvelLegendaryVillainGroups, 1);
+    } else if (marvelPlayerCount === '2') {
+      villainGroupResults = pickUniqueRandom(marvelLegendaryVillainGroups, 2);
+    } else if (
+      marvelPlayerCount === '3' ||
+      marvelPlayerCount === '4'
+    ) {
       villainGroupResults = pickUniqueRandom(marvelLegendaryVillainGroups, 3);
     } else {
-      villainGroupResults = pickUniqueRandom(marvelLegendaryVillainGroups, 5);
+      villainGroupResults = pickUniqueRandom(marvelLegendaryVillainGroups, 4);
     }
 
     let henchmenGroupResults;
     if (
-      document.getElementById('marvel-legendary-player-count').value === 4 ||
-      document.getElementById('marvel-legendary-player-count').value === 5
+      marvelPlayerCount === '4' ||
+      marvelPlayerCount === '5'
     ) {
       henchmenGroupResults = pickUniqueRandom(marvelLegendaryHenchmenVillains, 2);
     } else {
       henchmenGroupResults = pickUniqueRandom(marvelLegendaryHenchmenVillains, 1);
     }
-
-    const schemeResult = pickUniqueRandom(marvelLegendarySchemes, 1);
-    const mastermindResult = pickUniqueRandom(marvelLegendaryMasterMinds, 1);
 
     const coinFlipItems = [1, 2];
     const grievousWoundResult = coinFlipItems[Math.floor(Math.random() * coinFlipItems.length)];
